@@ -69,7 +69,7 @@ function clickedButtonHandler(colourId){
 }
 function delayNextSequence(i) {
 
-                   if(i==gamePattern.length-1){setTimeout(nextSequence(),100);}}
+                   if(i==gamePattern.length-1){setTimeout(nextSequence(),1000);}}
 
 function endGameReset(){
 
