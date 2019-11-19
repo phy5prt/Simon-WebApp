@@ -115,7 +115,7 @@ gamePattern.push(randomChosenColour);
 // console.log("game Pattern = " +  gamePattern);
 
 
-$("#" + randomChosenColour).fadeIn(50).fadeOut(50).fadeIn(50).fadeOut(50).fadeIn(50);
+$("#" + randomChosenColour).fadeIn(50).fadeOut(50).fadeIn(50).fadeOut(50);
 playAudio(randomChosenColour);
 level++;
 // console.log(level);
