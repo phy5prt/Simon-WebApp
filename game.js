@@ -9,7 +9,7 @@ var level =0;
 var wrongSound = new Audio("sounds/wrong.mp3");
 var body = $("body");
 var alreadyWaiting = false;
-var currentButton;
+
 
 
 waitingForStartingKeyPress(true);
@@ -75,7 +75,7 @@ function endGameReset(){
 //reset
 
 clearTimeout(nextSequence);
-clearTimeout(removePressed);
+
 userClickedPattern=[];
 gamePattern=[];
 
@@ -121,12 +121,12 @@ level++;
 // console.log(level);
 $("h1").text("Level " + level);
 }
-function removePressed(){currentButton.removeClass("pressed");}
+
 
 function animatePress(currentColour){
-currentButton = $("#"+currentColour);
+var currentButton = $("#"+currentColour);
 currentButton.addClass("pressed");
-setTimeout(removePressed,1000);
+setTimeout(function removePressed(){currentButton.removeClass("pressed");},1000);
 
 
 }
