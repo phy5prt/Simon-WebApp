@@ -9,7 +9,7 @@ var level =0;
 var wrongSound = new Audio("sounds/wrong.mp3");
 var body = $("body");
 var alreadyWaiting = false;
-
+var currentButton;
 
 
 waitingForStartingKeyPress(true);
@@ -66,10 +66,11 @@ function clickedButtonHandler(colourId){
 }
 
 
-}function delayNextSequence(i) {
-
+}
+function delayNextSequence(i) {
 
                    if(i==gamePattern.length-1){setTimeout(nextSequence(),100);}}
+
 function endGameReset(){
 
 //reset
@@ -122,10 +123,11 @@ level++;
 $("h1").text("Level " + level);
 }
 function removePressed(){currentButton.removeClass("pressed");}
+
 function animatePress(currentColour){
-var currentButton = $("#"+currentColour);
+currentButton = $("#"+currentColour);
 currentButton.addClass("pressed");
-setTimeout(removePressed(),1000);
+setTimeout(removePressed(),200);
 
 
 }
