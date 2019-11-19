@@ -73,7 +73,7 @@ function clickedButtonHandler(colourId){
 function endGameReset(){
 
 //reset
-clearTimeout(delayNextSequence);
+
 clearTimeout(nextSequence);
 clearTimeout(removePressed);
 userClickedPattern=[];
@@ -115,7 +115,7 @@ gamePattern.push(randomChosenColour);
 // console.log("game Pattern = " +  gamePattern);
 
 
-$("#" + randomChosenColour).fadeIn(50).fadeOut(50).fadeIn(50).fadeOut(50);
+$("#" + randomChosenColour).fadeOut(200).fadeIn(200).fadeOut(200).fadeIn(200);
 playAudio(randomChosenColour);
 level++;
 // console.log(level);
