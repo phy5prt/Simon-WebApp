@@ -61,7 +61,7 @@ function clickedButtonHandler(colourId){
           for(var i = 0; i<userClickedPattern.length; i++){
               if(gamePattern[i]!=userClickedPattern[i]){endGameReset();}
                 else{
- setTimeout(delayNextSequence(i),200}
+ setTimeout(delayNextSequence(i),200);}
   }
 }
 
