@@ -24,14 +24,15 @@ function waitingForStartingKeyPress(waitForKey){
 
 if((waitForKey==true) && (alreadyWaiting ==false)){
 alreadyWaiting =true;
-  console.log("adding event listner");
+  // console.log("adding event listner");
   $(document).on("keydown",
   function(){startGame();}
       );
 }else if ((waitForKey == false)&&(alreadyWaiting==true)){
           $(document).off("keydown");
           alreadyWaiting=false;
-          console.log("removing event listner");}
+          // console.log("removing event listner");
+        }
 }
 
 
@@ -53,25 +54,28 @@ function clickedButtonHandler(colourId){
   animatePress(userChosenColour);
   userClickedPattern.push(userChosenColour);
   playAudio(userChosenColour);
-  console.log("user clicked pattern = " + userClickedPattern);
+  // console.log("user clicked pattern = " + userClickedPattern);
 
   if(userClickedPattern.length>gamePattern.length){endGameReset();}
     else{
           for(var i = 0; i<userClickedPattern.length; i++){
               if(gamePattern[i]!=userClickedPattern[i]){endGameReset();}
-                else
- setTimeout(function () {
-
-
-                    if(i==gamePattern.length-1){setTimeout(nextSequence(),100);}},200);
+                else{
+ setTimeout(delayNextSequence(i),200}
   }
 }
 
 
-}
+}function delayNextSequence(i) {
+
+
+                   if(i==gamePattern.length-1){setTimeout(nextSequence(),100);}}
 function endGameReset(){
 
 //reset
+clearTimeout(delayNextSequence);
+clearTimeout(nextSequence);
+clearTimeout(removePressed);
 userClickedPattern=[];
 gamePattern=[];
 
@@ -111,17 +115,17 @@ gamePattern.push(randomChosenColour);
 // console.log("game Pattern = " +  gamePattern);
 
 
-$("#" + randomChosenColour).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
+$("#" + randomChosenColour).fadeIn(50).fadeOut(50).fadeIn(50).fadeOut(50).fadeIn(50);
 playAudio(randomChosenColour);
 level++;
 // console.log(level);
 $("h1").text("Level " + level);
 }
-
+function removePressed(){currentButton.removeClass("pressed");}
 function animatePress(currentColour){
 var currentButton = $("#"+currentColour);
 currentButton.addClass("pressed");
-setTimeout(function(){currentButton.removeClass("pressed");},1000);
+setTimeout(removePressed(),1000);
 
 
 }
