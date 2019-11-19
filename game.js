@@ -60,13 +60,10 @@ function clickedButtonHandler(colourId){
           for(var i = 0; i<userClickedPattern.length; i++){
               if(gamePattern[i]!=userClickedPattern[i]){endGameReset();}
                 else
-                //this delay means you can do too many clicks and even with game reset
-                //next sequence will still run if the reset happens within the setTimeout(function () {
-                //if we kept a game fail bool that is reset then nextsequence could check if its been triggered
-                //but should ignore it because the game is lost and the keypress for new game hasnt been hit yet
-                //done
+ setTimeout(function () {
 
-                    if(i==gamePattern.length-1){setTimeout(nextSequence(),100);}
+
+                    if(i==gamePattern.length-1){setTimeout(nextSequence(),100);}},200);
   }
 }
 
@@ -111,13 +108,13 @@ userClickedPattern = [];
 var random = Math.floor(Math.random()*4);
 var randomChosenColour = buttonColours[random];
 gamePattern.push(randomChosenColour);
-console.log("game Pattern = " +  gamePattern);
+// console.log("game Pattern = " +  gamePattern);
 
 
 $("#" + randomChosenColour).fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
 playAudio(randomChosenColour);
 level++;
-console.log(level);
+// console.log(level);
 $("h1").text("Level " + level);
 }
 
