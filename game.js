@@ -60,7 +60,7 @@ function clickedButtonHandler(colourId){
     else{
           for(var i = 0; i<userClickedPattern.length; i++){
               if(gamePattern[i]!=userClickedPattern[i]){endGameReset();}
-                else if(i==gamePattern.length-1){setTimeout(nextSequence(),500);}
+                else if(i==gamePattern.length-1){setTimeout(nextSequence(),2000);}
   }
 }
 
@@ -126,7 +126,7 @@ function removePressed(){currentButton.removeClass("pressed");}
 function animatePress(currentColour){
 currentButton = $("#"+currentColour);
 currentButton.addClass("pressed");
-setTimeout(removePressed(),200);
+setTimeout(removePressed(),1000);
 
 
 }
