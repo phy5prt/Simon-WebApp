@@ -35,8 +35,7 @@ alreadyWaiting =true;
         }
 }
 
-
-$(".btn").on("click", function(){
+function buttonClick(){
 //feel like this should be refactored out would i use an event so can keep the this
 //or just pass the id
 
@@ -47,7 +46,8 @@ clickedButtonHandler($(this).attr("id"));
 // userClickedPattern.push(userChosenColour);
 // playAudio(userChosenColour);
 // console.log(userClickedPattern);
-});
+}
+$(".btn").on("click", buttonClick );
 
 function clickedButtonHandler(colourId){
   userChosenColour=colourId;
@@ -60,7 +60,9 @@ function clickedButtonHandler(colourId){
     else{
           for(var i = 0; i<userClickedPattern.length; i++){
               if(gamePattern[i]!=userClickedPattern[i]){endGameReset();}
-                else if(i==gamePattern.length-1){setTimeout(nextSequence,2000);}
+                else if(i==gamePattern.length-1){
+$('.btn').addClass("avoid-clicks");
+                  setTimeout(nextSequence,1000);}
   }
 }
 
@@ -92,7 +94,8 @@ setTimeout(function(){body.removeClass("game-over");},200);
 }
 
 function startGame(){
-  $("h1").text("Level " + level);
+  $("#level-title").text("Level " + level);
+
   nextSequence();
   waitingForStartingKeyPress(false);
 
@@ -100,33 +103,53 @@ function startGame(){
 
 
 function playAudio(audioColour){
+
   audioColourFile = new Audio("sounds/" + audioColour + ".mp3");
   audioColourFile.play();
+
 }
 
+function showSequence(i){
 
+  $("#" + gamePattern[i]).fadeOut(200).fadeIn(200);
+    playAudio(gamePattern[i]);
+}
 
 function nextSequence(){
 userClickedPattern = [];
+$('.btn').addClass("avoid-clicks");
 
+$("#level-title").text("Watch the sequence" );
 var random = Math.floor(Math.random()*4);
 var randomChosenColour = buttonColours[random];
 gamePattern.push(randomChosenColour);
 // console.log("game Pattern = " +  gamePattern);
 
 
-$("#" + randomChosenColour).fadeOut(200).fadeIn(200).fadeOut(200).fadeIn(200);
-playAudio(randomChosenColour);
+for (let i = 0; i <gamePattern.length; i++) {
+  setTimeout(showSequence,400*i,i);
+if(i==(gamePattern.length-1)){
+  setTimeout(function(){
+    $("#level-title").text("Level " + level +" Go!");
+  $('.btn').removeClass("avoid-clicks");
+},400*(i+1));
+
+}
+
+}
+
+
+
 level++;
 // console.log(level);
-$("h1").text("Level " + level);
+
 }
 
 
 function animatePress(currentColour){
 var currentButton = $("#"+currentColour);
 currentButton.addClass("pressed");
-setTimeout(function removePressed(){currentButton.removeClass("pressed");},1000);
+setTimeout(function removePressed(){currentButton.removeClass("pressed");},200);
 
 
 }

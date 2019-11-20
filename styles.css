@@ -3,7 +3,7 @@ body {
   background-color: #011F3F;
 }
 
-#level-title {
+h2, h1 {
   font-family: 'Press Start 2P', cursive;
   font-size: 3rem;
   margin:  5%;
@@ -25,7 +25,10 @@ body {
   border: 10px solid black;
   border-radius: 20%;
 }
-
+.avoid-clicks {
+  pointer-events: none;
+opacity: 0.5;
+}
 .game-over {
   background-color: red;
   opacity: 0.8;
@@ -47,7 +50,12 @@ body {
   background-color: yellow;
 }
 
+
+
 .pressed {
   box-shadow: 0 0 20px white;
   background-color: grey;
+}
+.disable{
+
 }
