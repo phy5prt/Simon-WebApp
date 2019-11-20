@@ -62,7 +62,7 @@ function clickedButtonHandler(colourId){
               if(gamePattern[i]!=userClickedPattern[i]){endGameReset();}
                 else if(i==gamePattern.length-1){
 $('.btn').addClass("avoid-clicks");
-                  setTimeout(nextSequence,500);}
+                  setTimeout(nextSequence,1000);}
   }
 }
 
