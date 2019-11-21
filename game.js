@@ -84,7 +84,7 @@ gamePattern=[];
 
 level=0;
 waitingForStartingKeyPress(true);
-$("#level-title").text("GameOver Press A Key to Start");
+$("#level-title").text("GameOver Press any Key to Start");
 //fx
 wrongSound.play();
 
