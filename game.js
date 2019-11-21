@@ -73,7 +73,7 @@ $('.btn').addClass("avoid-clicks");
 
 
 function endGameReset(){
-
+$('.btn').addClass("avoid-clicks");
 //reset
 
 clearTimeout(nextSequence);
